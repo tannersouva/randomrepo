@@ -1,0 +1,52 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+}
+</style>
+</head>
+<body>
+<h1>Senior Trip:</h1>
+<p id="seniorTrip"></p>
+<h1>Graduation:</h1>
+<p id="seniorGraduation"></p>
+
+<script>
+// Set the date we're counting down to
+var seniorTrip = new Date("April 19, 2020 18:00:00").getTime();
+var graduation = new Date("June 28, 2020 14:00:00").getTime();
+
+// Update the count down every 1 second
+function getCountDown(countDownDate, FormID) {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById(FormID).innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById(FormID).innerHTML = "EXPIRED";
+  }
+}
+var graduationInterval = setInterval(getCountDown(graduation, "seniorGraduation"), 1000);
+var seniorTrip = setInterval(getCountDown(seniorTrip,"seniorTrip"))
+</script>
+</body>
+</html>
